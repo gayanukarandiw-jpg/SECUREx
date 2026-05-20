@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>🔑 Universal File And Text Encrypter </title>
+    <title>🔑 Universal Cryptographic Suite</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -14,6 +14,8 @@
         min-height: 100vh;
         color: #ffffff;
         padding: 60px 0;
+        display: flex;
+        align-items: center;
       }
       
       /* Premium Floating Glassmorphic Container */
@@ -23,13 +25,9 @@
         -webkit-backdrop-filter: blur(20px);
         border: 1px solid rgba(99, 102, 241, 0.15);
         border-radius: 28px;
-        padding: 3rem;
+        padding: 4rem 3rem;
         box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 
                     0 0 50px rgba(99, 102, 241, 0.03);
-        transition: border-color 0.3s ease;
-      }
-      .crypto-box:hover {
-        border-color: rgba(99, 102, 241, 0.25);
       }
 
       /* Cyber Typography */
@@ -48,187 +46,90 @@
         font-weight: 700;
       }
 
-      /* Sleek Inputs with Custom Transitions */
-      .form-label {
-        font-size: 0.85rem;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-      }
-      .form-control {
-        background: rgba(7, 10, 15, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+      /* Interactive Router Selection Cards */
+      .router-card {
+        background: rgba(7, 10, 15, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        text-decoration: none !important;
         color: #ffffff !important;
-        border-radius: 14px;
-        padding: 14px;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .form-control:focus {
-        background: #070a0f;
-        border-color: #6366f1;
-        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
-      }
-      .form-control::placeholder {
-        color: rgba(255, 255, 255, 0.3);
-      }
-      
-      /* Perfected Password Layout & Hover States */
-      .password-wrapper {
-        position: relative;
-        width: 100%;
-      }
-      .form-control-pass {
-        padding-right: 50px !important;
-      }
-      .password-toggle-btn {
-        position: absolute;
-        right: 4px;
-        top: 4px;
-        bottom: 4px;
-        width: 44px;
-        background: transparent;
-        border: none;
-        color: rgba(255, 255, 255, 0.4);
-        cursor: pointer;
-        font-size: 1.15rem;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        border-radius: 10px;
-        transition: all 0.2s ease;
-      }
-      .password-toggle-btn:hover {
-        color: #6366f1;
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      /* Premium Cyber Buttons */
-      .cyber-btn {
-        font-weight: 700;
-        font-size: 0.95rem;
-        letter-spacing: 0.5px;
-        border-radius: 14px;
-        padding: 14px 28px;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        border: none;
-      }
-      .btn-text-mode {
-        background: linear-gradient(135deg, #0ef2a1 0%, #00b372 100%);
-        color: #051911 !important; /* High contrast dark text for glowing button */
-        box-shadow: 0 4px 20px rgba(14, 242, 161, 0.15);
-      }
-      .btn-text-mode:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(14, 242, 161, 0.35);
-        filter: brightness(1.1);
-      }
-      .btn-file-mode {
-        background: rgba(255, 255, 255, 0.06);
-        color: #ffffff !important;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .btn-file-mode:hover {
-        transform: translateY(-2px);
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.05);
-      }
-
-      /* Matrix-Style Glowing Output Box */
-      .result-container {
-        border-color: rgba(14, 242, 161, 0.2) !important;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
-                    0 0 40px rgba(14, 242, 161, 0.02);
-      }
-      .result-box {
-        font-family: 'JetBrains Mono', monospace;
-        background: #05070a;
-        border: 1px solid rgba(14, 242, 161, 0.15);
-        border-radius: 14px;
-        color: #0ef2a1;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        padding: 1.25rem;
-        box-shadow: inset 0 2px 8px rgba(0,0,0,0.8);
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
       }
       
-      .btn-back {
-        color: rgba(255, 255, 255, 0.6);
-        border-color: rgba(255, 255, 255, 0.1);
-        transition: all 0.2s;
+      .router-card:hover {
+        transform: translateY(-5px);
+        background: rgba(15, 22, 36, 0.9);
+        border-color: #6366f1;
+        box-shadow: 0 15px 35px rgba(99, 102, 241, 0.2);
       }
-      .btn-back:hover {
-        color: #ffffff;
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.25);
+
+      .router-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease;
+      }
+      .router-card:hover .router-icon {
+        transform: scale(1.1);
+      }
+
+      .router-title {
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .router-desc {
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.6;
+      }
+
+      /* Secondary variant highlighting for the data vault module */
+      .router-card-accent {
+        border-color: rgba(14, 242, 161, 0.15);
+      }
+      .router-card-accent:hover {
+        border-color: #0ef2a1;
+        box-shadow: 0 15px 35px rgba(14, 242, 161, 0.12);
       }
     </style>
   </head>
   <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
+            <div class="col-xl-9 col-lg-10">
                 
-                <div class="mb-4">
-                    <a href="/" class="btn btn-back btn-sm rounded-pill px-3">← Back to Main Framework</a>
-                </div>
-
-                {% if error %}
-                <div class="alert alert-danger bg-danger text-white border-0 rounded-4 mb-4" role="alert">
-                    {{ error }}
-                </div>
-                {% endif %}
-
                 <div class="crypto-box">
-                    <h2 class="vault-title mb-1 text-center">🖺 Universal Text Cipher Engine 🖺</h2>
-                    <p class="text-center endpoint-badge mb-5">UNIVERSAL CRYPTO ROUTE</p>
+                    <h1 class="vault-title mb-1 text-center">🛡️ Universal Cryptographic Suite</h1>
+                    <p class="text-center endpoint-badge mb-5">SECURE DATA GATEWAY FRAMEWORK</p>
                     
-                    <form action="/text" method="POST">
-                        <div class="mb-4">
-                            <label class="form-label text-secondary fw-semibold">🖹Payload Data (Message or Ciphertext):</label>
-                            <textarea class="form-control" name="text_to_process" rows="4" required placeholder="Type regular text to encrypt OR paste base64 tokens to decrypt..."></textarea>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <a href="/text" class="router-card">
+                                <div class="router-icon">🖹</div>
+                                <div class="router-title">Text Cipher Engine</div>
+                                <div class="router-desc">Process plain text messages or complex data blocks directly into secure Base64 encryption payloads instantly.</div>
+                            </a>
                         </div>
 
-                        <div class="mb-5">
-                            <label class="form-label text-secondary fw-semibold">⛔Secret Authorization Key:</label>
-                            <div class="password-wrapper">
-                                <input type="password" class="form-control form-control-pass" id="passwordField" name="password" required placeholder="Enter private key passphrase">
-                                <button type="button" id="togglePassword" class="password-toggle-btn" title="Toggle Password Visibility">
-                                    👁️
-                                </button>
-                            </div>
+                        <div class="col-md-6">
+                            <a href="/file" class="router-card router-card-accent">
+                                <div class="router-icon">📁</div>
+                                <div class="router-title">Secure File Vault</div>
+                                <div class="router-desc">Safely lock binary files, process document objects, or unpack protected file systems using robust master access keys.</div>
+                            </a>
                         </div>
-
-                        <div class="d-flex gap-3">
-                            <button type="submit" name="action" value="encrypt" class="cyber-btn btn-text-mode flex-fill">🛡️ Run Encryption</button>
-                            <button type="submit" name="action" value="decrypt" class="cyber-btn btn-file-mode flex-fill">A Unlock Payload</button>
-                        </div>
-                    </form>
-                </div>
-
-                {% if result %}
-                <div class="crypto-box result-container mt-4 p-4">
-                    <h5 class="text-secondary fw-semibold mb-3" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase;">📋 Output Stream Matrix:</h5>
-                    <div class="p-3 result-box text-break">
-                        {{ result }}
                     </div>
                 </div>
-                {% endif %}
 
             </div>
         </div>
     </div>
-
-    <script>
-        const togglePassword = document.querySelector('#togglePassword');
-        const passwordInput = document.querySelector('#passwordField');
-
-        togglePassword.addEventListener('click', function () {
-            const currentType = passwordInput.getAttribute('type');
-            const targetType = currentType === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', targetType);
-            this.textContent = targetType === 'password' ? '👁️' : '🙈';
-        });
-    </script>
   </body>
 </html>
