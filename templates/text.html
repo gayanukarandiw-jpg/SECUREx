@@ -114,7 +114,7 @@
       }
       .btn-text-mode {
         background: linear-gradient(135deg, #0ef2a1 0%, #00b372 100%);
-        color: #051911 !important; /* Rich contrast dark label */
+        color: #051911 !important;
         box-shadow: 0 4px 20px rgba(14, 242, 161, 0.15);
       }
       .btn-text-mode:hover {
@@ -162,6 +162,36 @@
         background: rgba(255, 255, 255, 0.05);
         border-color: rgba(255, 255, 255, 0.25);
       }
+
+      /* Action buttons for micro utility modules */
+      .action-micro-btn {
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        background: rgba(14, 242, 161, 0.08);
+        color: #0ef2a1;
+        border: 1px solid rgba(14, 242, 161, 0.25);
+        border-radius: 8px;
+        padding: 5px 14px;
+        transition: all 0.2s ease;
+      }
+      .action-micro-btn:hover {
+        background: rgba(14, 242, 161, 0.18);
+        border-color: rgba(14, 242, 161, 0.45);
+        transform: translateY(-1px);
+      }
+      
+      /* Subtle dark styling specific for clear variant */
+      .btn-clear-style {
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(255, 255, 255, 0.6);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      .btn-clear-style:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+        border-color: rgba(255, 255, 255, 0.25);
+      }
     </style>
   </head>
   <body>
@@ -185,8 +215,18 @@
                     
                     <form action="/text" method="POST">
                         <div class="mb-4">
-                            <label class="form-label text-secondary fw-semibold">Payload Data (Message or Ciphertext):</label>
-                            <textarea class="form-control" name="text_to_process" rows="4" required placeholder="Type regular text to encrypt OR paste base64 tokens to decrypt..."></textarea>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <label class="form-label text-secondary fw-semibold mb-0">Payload Data (Message or Ciphertext):</label>
+                                <div class="d-flex gap-2">
+                                    <button type="button" id="clearPayloadBtn" class="action-micro-btn btn-clear-style">
+                                        🧹 Clear
+                                    </button>
+                                    <button type="button" id="pastePayloadBtn" class="action-micro-btn">
+                                        📋 Paste Content
+                                    </button>
+                                </div>
+                            </div>
+                            <textarea class="form-control" id="textToProcess" name="text_to_process" rows="4" required placeholder="Type regular text to encrypt OR paste base64 tokens to decrypt..."></textarea>
                         </div>
 
                         <div class="mb-5">
@@ -208,8 +248,13 @@
 
                 {% if result %}
                 <div class="crypto-box result-container mt-4 p-4">
-                    <h5 class="text-secondary fw-semibold mb-3" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase;">📋 Output Stream Matrix:</h5>
-                    <div class="p-3 result-box text-break">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="text-secondary fw-semibold mb-0" style="font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase;">📋 Output Stream Matrix:</h5>
+                        <button type="button" id="copyTokenBtn" class="action-micro-btn">
+                            📋 Copy Token
+                        </button>
+                    </div>
+                    <div class="p-3 result-box text-break" id="outputPayload">
                         {{ result }}
                     </div>
                 </div>
@@ -220,6 +265,7 @@
     </div>
 
     <script>
+        // Password fields toggle visualization engine
         const togglePassword = document.querySelector('#togglePassword');
         const passwordInput = document.querySelector('#passwordField');
 
@@ -229,6 +275,66 @@
             passwordInput.setAttribute('type', targetType);
             this.textContent = targetType === 'password' ? '👁️' : '🙈';
         });
+
+        // Textarea clear engine sequence
+        const clearPayloadBtn = document.querySelector('#clearPayloadBtn');
+        const textToProcess = document.querySelector('#textToProcess');
+
+        if (clearPayloadBtn && textToProcess) {
+            clearPayloadBtn.addEventListener('click', function () {
+                textToProcess.value = '';
+                textToProcess.focus();
+            });
+        }
+
+        // Clipboard asynchronous Paste operational engine
+        const pastePayloadBtn = document.querySelector('#pastePayloadBtn');
+
+        if (pastePayloadBtn && textToProcess) {
+            pastePayloadBtn.addEventListener('click', function () {
+                navigator.clipboard.readText().then(text => {
+                    textToProcess.value = text;
+                    
+                    // Visual state indicator update
+                    pastePayloadBtn.innerHTML = '✅ Pasted!';
+                    pastePayloadBtn.style.background = 'rgba(14, 242, 161, 0.2)';
+                    pastePayloadBtn.style.color = '#ffffff';
+
+                    setTimeout(() => {
+                        pastePayloadBtn.innerHTML = '📋 Paste Content';
+                        pastePayloadBtn.style.background = 'rgba(14, 242, 161, 0.08)';
+                        pastePayloadBtn.style.color = '#0ef2a1';
+                    }, 2200);
+                }).catch(err => {
+                    alert('Browser security blocked clipboard access. Please manually use Ctrl+V / Cmd+V.');
+                    console.error('Permissions denied on navigator reading sequence: ', err);
+                });
+            });
+        }
+
+        // Clipboard asynchronous Copy operational engine
+        const copyTokenBtn = document.querySelector('#copyTokenBtn');
+        const outputPayload = document.querySelector('#outputPayload');
+
+        if (copyTokenBtn && outputPayload) {
+            copyTokenBtn.addEventListener('click', function () {
+                const textToCopy = outputPayload.textContent.trim();
+
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    copyTokenBtn.innerHTML = '✅ Token Copied!';
+                    copyTokenBtn.style.background = 'rgba(14, 242, 161, 0.2)';
+                    copyTokenBtn.style.color = '#ffffff';
+                    
+                    setTimeout(() => {
+                        copyTokenBtn.innerHTML = '📋 Copy Token';
+                        copyTokenBtn.style.background = 'rgba(14, 242, 161, 0.08)';
+                        copyTokenBtn.style.color = '#0ef2a1';
+                    }, 2200);
+                }).catch(err => {
+                    console.error('Core security environment denied clipboard pipeline access: ', err);
+                });
+            });
+        }
     </script>
   </body>
 </html>
