@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypta - Secure Encryption Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0f19;
+        }
+        .animated-gradient {
+            background: linear-gradient(-45deg, #1e1b4b, #2e1065, #0f172a, #020617);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px rgba(255, 255, 255, 0.08) solid;
+        }
+    </style>
+</head>
+<body class="animated-gradient text-slate-100 min-h-screen flex flex-col justify-between">
 
+    <header class="border-b border-white/5 glass-panel sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="/" class="flex items-center gap-3 group">
+                <div class="p-2 bg-indigo-600/20 text-indigo-400 rounded-xl group-hover:scale-110 group-hover:bg-indigo-600/30 transition-all duration-300">
+                    <i data-lucide="shield-check" class="w-6 h-6 animate-pulse"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">CRYPTA</span>
+            </a>
+            <nav class="flex gap-6 text-sm font-medium text-slate-400">
+                <a href="/text" class="hover:text-white transition-colors flex items-center gap-1.5"><i data-lucide="file-text" class="w-4 h-4"></i> Text</a>
+                <a href="/file" class="hover:text-white transition-colors flex items-center gap-1.5"><i data-lucide="file-archive" class="w-4 h-4"></i> Files</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-6">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="text-center py-6 text-xs text-slate-600 border-t border-white/5">
+        <p>&copy; 2026 Crypta Hub. End-to-End Localized Privacy.</p>
+    </footer>
+
+    <script>
+        // Initialize all Lucide Icons across templates
+        lucide.createIcons();
+    </script>
+</body>
+</html>
