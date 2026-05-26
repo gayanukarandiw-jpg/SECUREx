@@ -1,135 +1,43 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>🔑 Universal Cryptographic Suite</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-4xl w-full text-center space-y-12 animate__animated animate__fadeIn">
     
-    <style>
-      body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        background: radial-gradient(circle at 50% 30%, #1e2640 0%, #0a0d14 100%);
-        min-height: 100vh;
-        color: #ffffff;
-        padding: 60px 0;
-        display: flex;
-        align-items: center;
-      }
-      
-      /* Premium Floating Glassmorphic Container */
-      .crypto-box {
-        background: rgba(15, 22, 36, 0.65);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(99, 102, 241, 0.15);
-        border-radius: 28px;
-        padding: 4rem 3rem;
-        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 
-                    0 0 50px rgba(99, 102, 241, 0.03);
-      }
-
-      /* Cyber Typography */
-      .vault-title {
-        font-weight: 800;
-        letter-spacing: -1.5px;
-        background: linear-gradient(135deg, #ffffff 40%, #c7d2fe 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .endpoint-badge {
-        font-family: 'JetBrains Mono', monospace;
-        letter-spacing: 2px;
-        color: #818cf8;
-        font-size: 0.75rem;
-        font-weight: 700;
-      }
-
-      /* Interactive Router Selection Cards */
-      .router-card {
-        background: rgba(7, 10, 15, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 20px;
-        padding: 2.5rem 2rem;
-        text-decoration: none !important;
-        color: #ffffff !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        height: 100%;
-      }
-      
-      .router-card:hover {
-        transform: translateY(-5px);
-        background: rgba(15, 22, 36, 0.9);
-        border-color: #6366f1;
-        box-shadow: 0 15px 35px rgba(99, 102, 241, 0.2);
-      }
-
-      .router-icon {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
-        transition: transform 0.3s ease;
-      }
-      .router-card:hover .router-icon {
-        transform: scale(1.1);
-      }
-
-      .router-title {
-        font-weight: 700;
-        font-size: 1.25rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .router-desc {
-        font-size: 0.88rem;
-        color: rgba(255, 255, 255, 0.5);
-        line-height: 1.6;
-      }
-
-      /* Secondary variant highlighting for the data vault module */
-      .router-card-accent {
-        border-color: rgba(14, 242, 161, 0.15);
-      }
-      .router-card-accent:hover {
-        border-color: #0ef2a1;
-        box-shadow: 0 15px 35px rgba(14, 242, 161, 0.12);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-9 col-lg-10">
-                
-                <div class="crypto-box">
-                    <h1 class="vault-title mb-1 text-center">🛡️ Universal Cryptographic Suite</h1>
-                    <p class="text-center endpoint-badge mb-5">SECURE DATA GATEWAY FRAMEWORK</p>
-                    
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <a href="/text" class="router-card">
-                                <div class="router-icon">🖹</div>
-                                <div class="router-title">Text Cipher Engine</div>
-                                <div class="router-desc">Process plain text messages or complex data blocks directly into secure Base64 encryption payloads instantly.</div>
-                            </a>
-                        </div>
-
-                        <div class="col-md-6">
-                            <a href="/file" class="router-card router-card-accent">
-                                <div class="router-icon">📁</div>
-                                <div class="router-title">Secure File Vault</div>
-                                <div class="router-desc">Safely lock binary files, process document objects, or unpack protected file systems using robust master access keys.</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+    <div class="space-y-4">
+        <div class="inline-flex p-4 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl shadow-xl shadow-indigo-500/10 mb-2 relative group overflow-hidden">
+            <i data-lucide="lock" class="w-12 h-12 text-white relative z-10 group-hover:rotate-12 transition-transform duration-300"></i>
+            <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 dynamic-scan"></div>
         </div>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white">
+            Advanced Cryptographic Vault
+        </h1>
+        <p class="text-slate-400 max-w-lg mx-auto text-base md:text-lg">
+            High-grade PBKDF2 key derivation and Fernet encryption wrapper built to safeguard structural payloads.
+        </p>
     </div>
-  </body>
-</html>
+
+    <div class="grid md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
+        
+        <a href="/text" class="glass-panel p-6 rounded-2xl hover:border-indigo-500/40 transition-all duration-300 group hover:-translate-y-1 block relative overflow-hidden">
+            <div class="flex items-start justify-between mb-4">
+                <div class="p-3 bg-indigo-500/10 text-indigo-400 rounded-xl group-hover:bg-indigo-500/20 transition-colors">
+                    <i data-lucide="message-square" class="w-6 h-6"></i>
+                </div>
+                <i data-lucide="arrow-right" class="w-5 h-5 text-slate-600 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">String & Message Mode</h3>
+            <p class="text-sm text-slate-400">Secure text snippets, raw keys, structural JSON fragments, or localized copy-paste messages safely.</p>
+        </a>
+
+        <a href="/file" class="glass-panel p-6 rounded-2xl hover:border-purple-500/40 transition-all duration-300 group hover:-translate-y-1 block relative overflow-hidden">
+            <div class="flex items-start justify-between mb-4">
+                <div class="p-3 bg-purple-500/10 text-purple-400 rounded-xl group-hover:bg-purple-500/20 transition-colors">
+                    <i data-lucide="hard-drive" class="w-6 h-6"></i>
+                </div>
+                <i data-lucide="arrow-right" class="w-5 h-5 text-slate-600 group-hover:text-purple-400 group-hover:translate-x-1 transition-all"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Binary File Mode</h3>
+            <p class="text-sm text-slate-400">Process arbitrary file systems into protected <span class="text-purple-400 font-mono">.opcu</span> components locally inside memory fields.</p>
+        </a>
+    </div>
+</div>
+{% endblock %}
